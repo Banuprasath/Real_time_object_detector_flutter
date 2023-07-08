@@ -14,7 +14,31 @@ class CameraView extends StatelessWidget {
           init: ScanController(),
           builder: (controller) {
             return controller.isCameraInitialized.value
-                ? CameraPreview(controller.cameraController)
+                ? Stack(
+                    children: [
+                      CameraPreview(controller.cameraController),
+                      Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.green, width: 4.0),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(
+                              width: 20,
+                              height: 100,
+                            ),
+                            Container(
+                                color: Colors.white,
+                                child: Text(controller.label)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
                 : Center(
                     child: Text("Loading Preview"),
                   );
