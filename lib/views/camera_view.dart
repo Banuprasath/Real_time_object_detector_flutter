@@ -10,6 +10,14 @@ class CameraView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Developed by Banu Prasath S",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+            )),
+        backgroundColor: Colors.black,
+      ),
       body: GetBuilder<ScanController>(
           init: ScanController(),
           builder: (controller) {
@@ -33,7 +41,12 @@ class CameraView extends StatelessWidget {
                             ),
                             Container(
                                 color: Colors.white,
-                                child: Text(controller.label)),
+                                child: Text(
+                                  controller.label,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                  ),
+                                )),
                           ],
                         ),
                       ),
